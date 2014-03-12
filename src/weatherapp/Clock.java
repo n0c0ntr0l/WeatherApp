@@ -1,17 +1,12 @@
 
-package weatherapp;
 
-/**
- *
- * @author daniel
- */
+package weatherapp;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import javax.swing.*;
 import java.applet.* ;
-import java.net.*;
-import sun.audio.*;
+
 
 public class Clock extends Frame {
 
@@ -31,20 +26,98 @@ public class Clock extends Frame {
    JButton button8;
    Panel p;
    AudioClip aClip;
-   boolean size = true;
+   boolean DansSize = true;
    
    
     public Clock(){
-
-        try{
-            aClip = Applet.newAudioClip(new URL("file:C:\\Users\\drd30\\Desktop\\beep-07.wav"));
-        }
-        catch(MalformedURLException e){
-            
-        }
-        jframe = new JFrame("test");
        
+        setTime();
+    }
+    
+    public static void main(String[] args) {
+       Clock app=new Clock();
+    }
+
+    public int getHour(){
+        return hour;
+    }
+    
+    public int getMins(){
+        return mins;
+    }
+
+    public void changeNight(){
+         p.setBackground(Color.black);
+                p.setForeground(Color.red);
+                
+                timer.setForeground(Color.red);
+                timer.setBackground(Color.black);
+        
+                timer2.setForeground(Color.red);
+                timer2.setBackground(Color.black);
+            
+                button1.setBackground(Color.black);
+                button2.setBackground(Color.black);
+                button3.setBackground(Color.black);
+                button4.setBackground(Color.black);
+                button5.setBackground(Color.black);
+                button6.setBackground(Color.black);
+                button7.setBackground(Color.black);
+                
+                button1.setForeground(Color.red);
+                button2.setForeground(Color.red);
+                button3.setForeground(Color.red);
+                button4.setForeground(Color.red);
+                button5.setForeground(Color.red);
+                button6.setForeground(Color.red);
+                button7.setForeground(Color.red);
+    }
+    
+    public void changeDay(){
+        p.setBackground(Color.white);
+                    p.setForeground(Color.BLACK);
+
+                    timer.setForeground(Color.black);
+                    timer.setBackground(Color.white);
+
+                    timer2.setForeground(Color.black);
+                    timer2.setBackground(Color.white);
+
+                    button1.setBackground(Color.white);
+                    button2.setBackground(Color.white);
+                    button3.setBackground(Color.white);
+                    button4.setBackground(Color.white);
+                    button5.setBackground(Color.white);
+                    button6.setBackground(Color.white);
+                    button7.setBackground(Color.white);
+
+                    button1.setForeground(Color.black);
+                    button2.setForeground(Color.black);
+                    button3.setForeground(Color.black);
+                    button4.setForeground(Color.black);
+                    button5.setForeground(Color.black);
+                    button6.setForeground(Color.black);
+                    button7.setForeground(Color.black);
+    }
+    
+    public void changeSizeMax(){
+        jframe.setSize(520,680);
+        jframe.validate();
+    }
+
+    public void changeSizeMin(){
         jframe.setSize(320,480);
+        jframe.validate();
+    }
+    
+    
+     public void setTime(){
+        
+        aClip = Applet.newAudioClip(getClass().getResource("beep-07.wav"));
+        
+        jframe = new JFrame("Weather App-Alarm set");
+       
+        jframe.setSize(520,680);
         jframe.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
         p =new Panel();
@@ -263,24 +336,24 @@ public class Clock extends Frame {
              
             });
          
-        button8 = new JButton("_");
+        button8 = new JButton("Change Size");
         button8.setFont(new Font("Arial",Font.BOLD,10));
-        button8.setForeground(Color.PINK);
-        button8.setBackground(Color.PINK);
+        button8.setForeground(Color.yellow);
+        button8.setBackground(Color.blue);
         button8.setBorderPainted(false);
         button8.setBorder(null);
         c.gridx=0;
         c.gridy=10;
         c.anchor = GridBagConstraints.FIRST_LINE_START;   
         p.add(button8,c);
-        button7.addActionListener(new ActionListener(){  
+        button8.addActionListener(new ActionListener(){  
             public void actionPerformed(ActionEvent ea){
-                if(size){
-                    size=false;
+                if(DansSize){
+                    DansSize=false;
                     changeSizeMin();
                 }
                 else { 
-                    size=true;
+                    DansSize=true;
                     changeSizeMax();
                     
                 }
@@ -289,83 +362,6 @@ public class Clock extends Frame {
             });
         
         
-        jframe.setVisible(true);
-        
-        
-        
-    }
-    public static void main(String[] args) {
-       Clock app=new Clock();
-    }
-
-    public int getHour(){
-        return hour;
-    }
-    
-    public int getMins(){
-        return mins;
-    }
-
-    public void changeNight(){
-         p.setBackground(Color.black);
-                p.setForeground(Color.red);
-                
-                timer.setForeground(Color.red);
-                timer.setBackground(Color.black);
-        
-                timer2.setForeground(Color.red);
-                timer2.setBackground(Color.black);
-            
-                button1.setBackground(Color.black);
-                button2.setBackground(Color.black);
-                button3.setBackground(Color.black);
-                button4.setBackground(Color.black);
-                button5.setBackground(Color.black);
-                button6.setBackground(Color.black);
-                button7.setBackground(Color.black);
-                
-                button1.setForeground(Color.red);
-                button2.setForeground(Color.red);
-                button3.setForeground(Color.red);
-                button4.setForeground(Color.red);
-                button5.setForeground(Color.red);
-                button6.setForeground(Color.red);
-                button7.setForeground(Color.red);
-    }
-    
-    public void changeDay(){
-        p.setBackground(Color.white);
-                    p.setForeground(Color.BLACK);
-
-                    timer.setForeground(Color.black);
-                    timer.setBackground(Color.white);
-
-                    timer2.setForeground(Color.black);
-                    timer2.setBackground(Color.white);
-
-                    button1.setBackground(Color.white);
-                    button2.setBackground(Color.white);
-                    button3.setBackground(Color.white);
-                    button4.setBackground(Color.white);
-                    button5.setBackground(Color.white);
-                    button6.setBackground(Color.white);
-                    button7.setBackground(Color.white);
-
-                    button1.setForeground(Color.black);
-                    button2.setForeground(Color.black);
-                    button3.setForeground(Color.black);
-                    button4.setForeground(Color.black);
-                    button5.setForeground(Color.black);
-                    button6.setForeground(Color.black);
-                    button7.setForeground(Color.black);
-    }
-    
-    public void changeSizeMin(){
-        jframe.setSize(520,680);
-    }
-
-    public void changeSizeMax(){
-        jframe.setSize(320,480);
-    }
+        jframe.setVisible(true);        
+     }        
 }
-
