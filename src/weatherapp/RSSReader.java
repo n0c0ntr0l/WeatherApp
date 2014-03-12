@@ -61,10 +61,12 @@ public class RSSReader {
     }
     
     public ForecastStack getNextDay(){
+        feedList = feed.getEntries();
       return new ForecastStack(feedList.get(1).getDescription().getValue());
     }
     
     public ForecastStack getDayAfterTomorrow(){ // couldn't resist!
+        feedList = feed.getEntries();
         return new ForecastStack(feedList.get(2).getDescription().getValue());
     }
     
